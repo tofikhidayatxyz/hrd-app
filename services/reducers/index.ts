@@ -6,6 +6,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import auth from '../reducers/auth'
 import profile from '../reducers/profile'
 import employee from '../reducers/employee'
+import participant from '../reducers/participant'
+import developer from '../reducers/developer'
 
 const persistedprofile = persistReducer(
   {
@@ -24,6 +26,24 @@ const persistedEmployee = persistReducer(
   employee
 )
 
+const persistedParticipant = persistReducer(
+  {
+    key: 'partipant',
+    storage: AsyncStorage,
+    blacklist: ['create'],
+  },
+  participant
+)
+
+const persistedDeveloper = persistReducer(
+  {
+    key: 'developer',
+    storage: AsyncStorage,
+    blacklist: ['create'],
+  },
+  developer
+)
+
 /**
  * App default
  */
@@ -31,6 +51,8 @@ const app = {
   auth,
   profile: persistedprofile,
   employee: persistedEmployee,
+  participant: persistedParticipant,
+  developer: persistedDeveloper,
 }
 
 /**

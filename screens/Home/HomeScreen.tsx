@@ -20,6 +20,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5'
 import Authenticate from '../../services/routers/Authenticate'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../services/actions/auth'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required('This field is Required'),
@@ -76,15 +77,22 @@ const style = StyleSheet.create<any>({
     color: scheme.white,
   },
   rowMenu: {
+    flexDirection: 'row',
     paddingTop: 20,
     paddingLeft: 15,
     paddingRight: 15,
   },
   rowIcon: {
+    width: '25%',
     flexDirection: 'row',
   },
+  touchIcon: {
+    width: '100%',
+    opacity: 1,
+    alignItems: 'center',
+  },
   colParent: {
-    width: '20%',
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 5,
@@ -97,12 +105,16 @@ const style = StyleSheet.create<any>({
   },
   menuName: {},
   bottomLogout: {
-    position: 'fixed',
+    position: 'absolute',
     // backgroundColor: 'red',
     bottom: 100,
     left: 0,
     padding: 10,
     width: '100%',
+  },
+  copyright: {
+    marginTop: 10,
+    textAlign: 'center',
   },
 })
 
@@ -110,7 +122,10 @@ export default function LoginScreen({ navigation }: any) {
   const user = useSelector((state: any) => state?.profile?.profile?.data)
   const Dispatch = useDispatch()
   useEffect(() => {
-    // navigation.navigate('employee.index')
+    // navigation.navigate('participant.create')
+    // setTimeout(() => {
+    // navigation.navigate('attendance.create')
+    // }, 3000)
   }, [])
 
   return (
@@ -138,14 +153,48 @@ export default function LoginScreen({ navigation }: any) {
           </View>
           <View style={style.rowMenu}>
             <View style={style.rowIcon}>
-              <TouchableWithoutFeedback
+              <TouchableOpacity
+                style={style.touchIcon}
                 onPress={() => navigation.navigate('employee.index')}
               >
                 <View style={style.colParent}>
                   <Icon name="users" size={30} color={scheme.primary} />
                   <Text style={style.colName}>Employee</Text>
                 </View>
-              </TouchableWithoutFeedback>
+              </TouchableOpacity>
+            </View>
+            <View style={style.rowIcon}>
+              <TouchableOpacity
+                style={style.touchIcon}
+                onPress={() => navigation.navigate('attendance.create')}
+              >
+                <View style={style.colParent}>
+                  <Icon name="calendar" size={30} color={scheme.primary} />
+                  <Text style={style.colName}>Attendance</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={style.rowIcon}>
+              <TouchableOpacity
+                style={style.touchIcon}
+                onPress={() => navigation.navigate('participant.index')}
+              >
+                <View style={style.colParent}>
+                  <Icon name="user" size={30} color={scheme.primary} />
+                  <Text style={style.colName}>Participant</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={style.rowIcon}>
+              <TouchableOpacity
+                style={style.touchIcon}
+                onPress={() => navigation.navigate('developer.index')}
+              >
+                <View style={style.colParent}>
+                  <Icon name="dev" size={30} color={scheme.primary} />
+                  <Text style={style.colName}>Developer</Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -159,6 +208,9 @@ export default function LoginScreen({ navigation }: any) {
           >
             Logout
           </Button>
+          <Text style={style.copyright}>
+            &copy; Tofik Hidayat . UAS Mobile programming , 2023
+          </Text>
         </View>
       </SafeAreaView>
     </Authenticate>

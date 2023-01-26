@@ -9,7 +9,7 @@ import * as interceptors from './interceptors'
  */
 export const webApi = ({ auth, self }: any = {}) => {
   const baseApi = axios.create({
-    baseURL: self ? '' : 'https://hrd-api.tofikhidayat.xyz/api/',
+    baseURL: self ? '' : 'http://127.0.0.1:8000/api/', //'https://hrd-api.tofikhidayat.xyz/api/',
     headers: {
       'Cache-Control': 'no-cache',
       'Content-Type': 'application/json',

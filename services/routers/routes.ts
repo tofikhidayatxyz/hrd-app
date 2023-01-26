@@ -4,6 +4,11 @@ import SingIn from '../../screens/Auth/SingInScreen'
 import SignUp from '../../screens/Auth/SingUpScreen'
 import Home from '../../screens/Home/HomeScreen'
 import EmployeeCreate from '../../screens/Employee/Create'
+import AttendanceCreate from '../../screens/Attendance/Create'
+import ParticipantCreate from '../../screens/Participant/Create'
+import ParticipantIndex from '../../screens/Participant'
+import DeveloperIndex from '../../screens/Developer'
+import DeveloperCreate from '../../screens/Developer/Create'
 
 /**
  * Maping interface
@@ -76,6 +81,56 @@ const Routers: Array<RouterInterface> = [
     auth: true,
     component: EmployeeCreate,
     title: 'Create Employee',
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: 'attendance.create',
+    type: 'page',
+    auth: true,
+    component: AttendanceCreate,
+    title: 'Create Attendance',
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: 'participant.index',
+    type: 'page',
+    auth: true,
+    component: ParticipantIndex,
+    title: 'Emploee',
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: 'participant.create',
+    type: 'page',
+    auth: true,
+    component: ParticipantCreate,
+    title: 'Create Employee',
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: 'developer.index',
+    type: 'page',
+    auth: true,
+    component: DeveloperIndex,
+    title: 'Developer',
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: 'developer.create',
+    type: 'page',
+    auth: true,
+    component: DeveloperCreate,
+    title: 'Create Developer',
     options: {
       headerShown: false,
     },
